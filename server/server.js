@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import postRoutes from "./routes/postRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
 
 dotenv.config();
 
@@ -10,6 +12,8 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use("/api/posts", postRoutes);
+app.use("/api/categories", categoryRoutes);
 
 // MongoDB Connection
 mongoose
