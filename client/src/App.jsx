@@ -2,24 +2,24 @@ import { useState } from "react";
 import Posts from "./components/Posts";
 import AddPost from "./components/AddPost";
 
+
 function App() {
   const [refresh, setRefresh] = useState(false);
 
-  const handleRefresh = () => {
-    setRefresh(!refresh);
-  };
-
   return (
-    <div className="p-6">
-      <h1 className="text-4xl font-bold text-center my-6">MERN Blog</h1>
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold text-center mb-10 text-gray-900">
+        MERN Blog
+      </h1>
 
-      {/* Add Post Form */}
-      <AddPost onPostAdded={handleRefresh} />
+      <AddPost onPostAdded={() => setRefresh(!refresh)} />
 
-      {/* Posts List */}
-      <Posts refresh={refresh} />
+      <div className="border-t mt-10 pt-8">
+        <Posts refresh={refresh} />
+      </div>
     </div>
   );
 }
+
 
 export default App;

@@ -11,23 +11,28 @@ const Posts = ({ refresh }) => {
 
   useEffect(() => {
     fetchPosts();
-  }, [refresh]); // ✅ Refresh whenever a new post is added
+  }, [refresh]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold">Posts</h2>
+    <div className="max-w-3xl mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-6 text-center">Recent Posts</h2>
 
-      {posts.length > 0 ? (
-        <ul className="mt-4 space-y-2">
-          {posts.map((post) => (
-            <li key={post._id} className="p-3 border rounded shadow">
-              <h3 className="text-xl font-semibold">{post.title}</h3>
-              <p className="text-gray-600">{post.content}</p>
-            </li>
-          ))}
-        </ul>
+      {posts.length === 0 ? (
+        <p className="text-center text-gray-600">
+          No posts yet...
+        </p>
       ) : (
-        <p>No posts yet...</p>
+        <div className="grid gap-4">
+          {posts.map((post) => (
+            <div
+              key={post._id}
+              className="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition"
+            >
+              <h3 className="font-bold text-lg">{post.title}</h3>
+              <p className="text-gray-700 mt-2">{post.content}</p>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

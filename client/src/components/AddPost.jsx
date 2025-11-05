@@ -20,30 +20,29 @@ const AddPost = ({ onPostAdded }) => {
     if (res.ok) {
       setTitle("");
       setContent("");
-      onPostAdded(); // Notify parent component to refresh posts
-      alert("✅ Post added successfully! Refresh to see it.");
+      onPostAdded();
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-4 mt-4 border rounded shadow"
+      className="bg-white max-w-xl mx-auto mt-6 p-6 rounded-lg shadow-md border"
     >
-      <h2 className="text-xl font-semibold mb-3">Add a New Post</h2>
+      <h2 className="text-2xl font-bold text-center mb-5">Add New Post</h2>
 
       <input
         type="text"
-        placeholder="Title"
-        className="w-full p-2 border rounded mb-3"
+        placeholder="Post title..."
+        className="w-full p-3 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
       />
 
       <textarea
-        placeholder="Content"
-        className="w-full p-2 border rounded mb-3"
+        placeholder="Write content here..."
+        className="w-full p-3 h-28 border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
@@ -51,9 +50,9 @@ const AddPost = ({ onPostAdded }) => {
 
       <button
         type="submit"
-        className="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        className="w-full p-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
       >
-        Add Post
+        ✅ Add Post
       </button>
     </form>
   );
