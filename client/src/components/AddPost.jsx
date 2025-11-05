@@ -5,7 +5,15 @@ const AddPost = ({ onPostAdded }) => {
   const [content, setContent] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+     e.preventDefault();
+    if (!title || !content) return alert("All fields are required!");
+
+    await fetch("http://localhost:5000/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
+
 
     const newPost = { title, content };
 
@@ -21,6 +29,8 @@ const AddPost = ({ onPostAdded }) => {
       setTitle("");
       setContent("");
       onPostAdded();
+    } else {
+      alert("Failed to add post");
     }
   };
 
